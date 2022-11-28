@@ -27,20 +27,6 @@ function draw() {
     // getting the data of the video
     const vidData = sCtx.getImageData(0, 0, source.width, source.height)
 
-    // // 2. Create a new ImageDate object with the mirror image, called mirImDat 
-    // const mirImDat = ctx.createImageData(vidData);   // a. initialze mirImDat; all components of mirImDat.data are 0 here
-    // for (let y = 0; y < source.height; y++) {                    // b. update the mirImDat.data components
-    //     for (let x = 0; x < source.width; x++) {
-    //         let d = 4 * (y * source.width + x);
-    //         let s = 4 * (y * source.width + (source.width - (x + 1)));
-    //         mirImDat.data[d + 0] = vidData.data[s + 0];
-    //         mirImDat.data[d + 1] = vidData.data[s + 1];
-    //         mirImDat.data[d + 2] = vidData.data[s + 2];
-    //         mirImDat.data[d + 3] = vidData.data[s + 3];
-    //     };                                              // done updating the mirImDat.data components
-    // };
-    // ctx.putImageData (mirImDat, 0, 0);   
-
     // 2. Create a new ImageDate object with the mirror image, called mirImDat 
     const mirImDat = ctx.createImageData(vidData);   // a. initialze mirImDat; all components of mirImDat.data are 0 here
     const values = [];
@@ -62,17 +48,17 @@ function draw() {
             if(currentValue < 18){
                 ctx.save();
                 ctx.translate(x * factorW, y * factorH);
-                draw2(ctx, factorW);
+                draw3(ctx, factorW);
                 ctx.restore();
             } else if(currentValue < 63 * 2){
                 ctx.save();
                 ctx.translate(x * factorW, y * factorH);
-                draw1(ctx, factorW);
+                draw2(ctx, factorW);
                 ctx.restore();
-            } else if(currentValue < 63 * 3){
+            } else if(currentValue < 63 * 3.3){
                 ctx.save();
                 ctx.translate(x * factorW, y * factorH);
-                draw2(ctx, factorW);
+                draw1(ctx, factorW);
                 ctx.restore();
             } else {
                 ctx.save();
@@ -116,7 +102,7 @@ function draw1(ctx, cellW){
     
     ctx.restore(); 
 }
-// cross
+// cross negative
 function draw2(ctx, cellW){
     ctx.save();
     ctx.strokeStyle = "white";
